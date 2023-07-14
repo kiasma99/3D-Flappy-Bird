@@ -38,4 +38,11 @@ public class Player : MonoBehaviour
             rb.AddForce(jumpMove);
         }
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.CompareTag("Wall"))
+        {
+            Debug.Log("충돌 감지");
+        }
+    }
 }

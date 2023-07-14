@@ -26,6 +26,7 @@ public class WallController : MonoBehaviour
 
     public void SetRandomPosition(bool First)
     {
+        transform.gameObject.SetActive(true);
         transform.GetChild(0).gameObject.transform.position = defaultUpWall;
         transform.GetChild(1).gameObject.transform.position = defaultDownWall;
         transform.GetChild(2).gameObject.transform.position = defaultLeftWall;
