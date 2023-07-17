@@ -10,13 +10,16 @@ public class Stage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(stageMove * Time.deltaTime);
-        if(transform.position.z <= -28)
+        if(GameManager.Instance.state == GameManager.State.Play)
         {
-            transform.position = new Vector3(0, 0, 122f);
-            for(int i = 0; i < wallControllers.Length; i++)
+            transform.Translate(stageMove * Time.deltaTime);
+            if (transform.position.z <= -28)
             {
-                wallControllers[i].SetRandomPosition(false);
+                transform.position = new Vector3(0, 0, 122f);
+                for (int i = 0; i < wallControllers.Length; i++)
+                {
+                    wallControllers[i].SetRandomPosition(false);
+                }
             }
         }
     }

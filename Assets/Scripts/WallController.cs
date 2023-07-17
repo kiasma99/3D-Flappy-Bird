@@ -24,7 +24,7 @@ public class WallController : MonoBehaviour
         }
     }
 
-    public void SetRandomPosition(bool First)
+    public void SetRandomPosition(bool Start)
     {
         transform.gameObject.SetActive(true);
         transform.GetChild(0).gameObject.transform.position = defaultUpWall;
@@ -32,7 +32,7 @@ public class WallController : MonoBehaviour
         transform.GetChild(2).gameObject.transform.position = defaultLeftWall;
         transform.GetChild(3).gameObject.transform.position = defaultRightWall;
 
-        if (First && transform.parent.gameObject.transform.position.z == 0 && transform.position.z == 0) return;
+        if (Start && transform.parent.gameObject.transform.position.z == 0 && transform.position.z == 0) return;
 
         height = Random.Range(4, 6.4f);
         upHeight = Random.Range(1, height);
@@ -45,5 +45,13 @@ public class WallController : MonoBehaviour
         rightWidth = width - leftWidth;
         transform.GetChild(2).gameObject.transform.position += new Vector3(1f, 0, 0) * leftWidth + transform.parent.gameObject.transform.position;
         transform.GetChild(3).gameObject.transform.position += new Vector3(-1f, 0, 0) * rightWidth + transform.parent.gameObject.transform.position;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            GameManager.Instance.score++;
+        }
     }
 }
