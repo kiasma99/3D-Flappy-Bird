@@ -53,4 +53,11 @@ public class UIManager : MonoBehaviour
         GameManager.Instance.score = -1;
         SceneManager.LoadScene("Game");
     }
+
+    public void MainMenu()
+    {
+        GameManager.Instance.state = GameManager.State.Start;
+        GameManager.Instance.score = -1;
+        SceneManager.LoadScene("Main");
+    }
 }

@@ -34,14 +34,14 @@ public class WallController : MonoBehaviour
 
         if (Start && transform.parent.gameObject.transform.position.z == 0 && transform.position.z == 0) return;
 
-        height = Random.Range(4, 6.4f);
-        upHeight = Random.Range(1, height);
+        height = Random.Range(5f, 6f);
+        upHeight = Random.Range(1f, height);
         downHeight = height - upHeight;
         transform.GetChild(0).gameObject.transform.position += new Vector3(0, -1f, 0) * upHeight + transform.parent.gameObject.transform.position;
         transform.GetChild(1).gameObject.transform.position += new Vector3(0, 1f, 0) * downHeight + transform.parent.gameObject.transform.position;
 
-        width = Random.Range(0, 5f);
-        leftWidth = Random.Range(0, width);
+        width = Random.Range(5f, 12f);
+        leftWidth = Random.Range(1f, width);
         rightWidth = width - leftWidth;
         transform.GetChild(2).gameObject.transform.position += new Vector3(1f, 0, 0) * leftWidth + transform.parent.gameObject.transform.position;
         transform.GetChild(3).gameObject.transform.position += new Vector3(-1f, 0, 0) * rightWidth + transform.parent.gameObject.transform.position;

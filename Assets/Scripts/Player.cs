@@ -27,15 +27,15 @@ public class Player : MonoBehaviour
 
             if (x < 0)
             {
-                transform.rotation = Quaternion.Euler(0f, 0f, 135f);
+                transform.rotation = Quaternion.Euler(0f, 0f, 15f);
             }
             else if (x > 0)
             {
-                transform.rotation = Quaternion.Euler(0f, 0f, 45f);
+                transform.rotation = Quaternion.Euler(0f, 0f, -15f);
             }
             else
             {
-                transform.rotation = Quaternion.Euler(0f, 0f, 90f);
+                transform.rotation = Quaternion.Euler(0f, 0f, 0f);
             }
 
             if (Input.GetKeyDown(KeyCode.Space))
