@@ -5,9 +5,20 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     private static GameManager instance = null;
+    public enum State
+    {
+        Start,
+        Play,
+        Stop,
+        End
+    }
+    public State state;
+    public int bestScore;
+    public int score;
 
     private void Awake()
     {
+        bestScore = 0;
         if(instance == null)
         {
             instance = this;
@@ -30,17 +41,6 @@ public class GameManager : MonoBehaviour
             return instance;
         }
     }
-
-    public enum State
-    {
-        Start,
-        Play,
-        Stop,
-        End
-    }
-    public State state;
-    // public int bestScore;
-    public int score;
 
     // Start is called before the first frame update
     void Start()
