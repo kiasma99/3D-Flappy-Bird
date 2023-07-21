@@ -5,7 +5,7 @@ using UnityEngine;
 public class Stage : MonoBehaviour
 {
     [SerializeField] Vector3 stageMove = new Vector3 (0, 0, -2f);
-    [SerializeField] WallController[] wallControllers;
+    [SerializeField] WallController wallController;
 
     // Update is called once per frame
     void Update()
@@ -13,13 +13,10 @@ public class Stage : MonoBehaviour
         if(GameManager.Instance.state == GameManager.State.Play)
         {
             transform.Translate(stageMove * Time.deltaTime);
-            if (transform.position.z <= -28)
+            if (transform.position.z <= -8)
             {
-                transform.position = new Vector3(0, 0, 122f);
-                for (int i = 0; i < wallControllers.Length; i++)
-                {
-                    wallControllers[i].SetRandomPosition(false);
-                }
+                transform.position = new Vector3(0, 0, 92f);
+                wallController.SetRandomPosition(false);
             }
         }
     }
