@@ -13,12 +13,33 @@ public class GameManager : MonoBehaviour
         End
     }
     public State state;
+    public AudioSource bgmAudio;
+    public float bgmValue, sfxValue;
+    public bool isBGMMute, isSFXMute;
     public int bestScore;
     public int score;
 
+    public bool isPlay => state == State.Play;
+
     private void Awake()
     {
-        bestScore = 0;
+        if (PlayerPrefs.HasKey("BestScore")) bestScore = PlayerPrefs.GetInt("BestScore");
+        else bestScore = 0;
+
+        if (PlayerPrefs.HasKey("BGMValue")) bgmValue = PlayerPrefs.GetFloat("BGMValue");
+        else bgmValue = 100;
+
+        if (PlayerPrefs.HasKey("SFXValue")) sfxValue = PlayerPrefs.GetFloat("SFXValue");
+        else sfxValue = 100;
+
+        if (PlayerPrefs.HasKey("isBGMMute")) isBGMMute = PlayerPrefs.GetInt("isBGMMute") == 1 ? true : false;
+        else isBGMMute = false;
+
+        if (PlayerPrefs.HasKey("isSFXMute")) isSFXMute = PlayerPrefs.GetInt("isSFXMute") == 1 ? true : false;
+        else isSFXMute = false;
+
+        if (isBGMMute) bgmAudio.enabled = false;
+
         if(instance == null)
         {
             instance = this;
@@ -56,9 +77,7 @@ public class GameManager : MonoBehaviour
         {
             state = State.Play;
         }
-        if (state == State.Play && Input.GetKeyDown(KeyCode.Escape))
-        {
-            state = State.Stop;
-        }
+
+        bgmAudio.volume = bgmValue / 100;
     }
 }
