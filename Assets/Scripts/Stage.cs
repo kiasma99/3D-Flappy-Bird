@@ -16,7 +16,7 @@ public class Stage : MonoBehaviour
             transform.Translate(stageMove * Time.deltaTime);
             if (transform.position.z <= -8)
             {
-                transform.position = new Vector3(0, 0, 52f);
+                transform.position += new Vector3(0, 0, 60f);
                 wallController.SetRandomPosition(false);
             }
         }

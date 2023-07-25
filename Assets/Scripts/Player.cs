@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
             hitSound.volume = GameManager.Instance.sfxValue / 100;
 
             Time.timeScale = 1;
+            moveSpeed = 5f + 0.1f * GameManager.Instance.score / 5;
             float x = Input.GetAxisRaw("Horizontal");
             transform.position += new Vector3(x, 0f, 0f) * moveSpeed * Time.deltaTime;
 
